@@ -1,7 +1,7 @@
 
 public class ExceptionHandling {
 
-	
+	//You also have to call the method and to catch the exception
 	public void doSomething(int x) throws SomeAwesomeException{
 		double c = -7;
 		if(x<0){
