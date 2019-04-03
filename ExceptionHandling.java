@@ -1,16 +1,8 @@
 
 public class ExceptionHandling {
 
-	//You also have to call the method and to catch the exception
-	public void doSomething(int x) throws SomeAwesomeException{
-		double c = -7;
-		if(x<0){
-		throw new SomeAwesomeException("<0");
-        }else {
-        	double d = Math.sqrt(c);
-        	System.out.println(d);
-        }
-	}
+	
+	
 	public static void main(String[] args) {
 		
 		//todo:
@@ -52,9 +44,20 @@ public class ExceptionHandling {
 		}
 		
 		double c = -7.0;
-		double d = Math.sqrt(c);
-		System.out.println(d);
-	}
+		try {
+			 NegativeInteger(c);
+		} catch(NegativeIntegerException e) {
+			e.printStackTrace();
+		}
 	
+	}
+	public static double NegativeInteger(double c) throws NegativeIntegerException{
+		if(c<0){
+		     throw new NegativeIntegerException("The given valve is a Negative Integer");
+        }else {
+        	double d = Math.sqrt(c);
+        	return d;
+        }
+	}
 	
 }

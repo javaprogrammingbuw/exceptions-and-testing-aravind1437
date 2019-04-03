@@ -10,7 +10,7 @@ public class BankAccount {
 	 private Person owner;
     
 	
-	public void AccDetails() {
+	public BankAccount(Person owner, double balance, double limit) {
 		
 		String a="";
 		for (int j=0; j<6; j++){
@@ -23,15 +23,14 @@ public class BankAccount {
 		b+= new Random().nextInt(10);
 		}
 		
-		//this.owner = owner;
-        //this.balance = balance;
-        //this.limit = limit;
+		this.owner = owner;
+        this.balance = balance;
+        this.limit = limit;
 		this.iban = s + b;
      }
 	
    public BankAccount(Person owner, double balance){
 		
-	   AccDetails();
 	   this.owner = owner;
 	   this.balance = balance;
 	   this.limit = 0.0;
@@ -48,6 +47,7 @@ public class BankAccount {
        }
        this.iban = s + b;
        }
+
 	public Person getowner() {
 		return this.owner;
 	    }
@@ -63,17 +63,19 @@ public class BankAccount {
 	public String getiban() {
 		return this.iban;
      	}
-	
+	public int getSecurityNumber(){
+		return this.securityNumber;
+	    }	
 
-    public double deposit(double deposit,int securityNumber) {
+    public double deposit(double amount,int securityNumber) {
 	  if(this.securityNumber == securityNumber) {
-	  balance = balance + deposit;
+	  balance = balance + amount;
 	    }else {
 	    System.out.println("Invalid Security number");
 	    }
 	    return balance;
 	    }
-   public double withdraw(double amount) {
+   public double withdraw(double amount, int securityNumber) {
 	   if(this.securityNumber == securityNumber) {
 	   if(amount <= (balance + limit)) {
 	   return balance-= amount;
